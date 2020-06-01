@@ -15,9 +15,8 @@ namespace NearLosslessPredictiveCoder.Predictors
             return a + b - c;
         }
 
-        public string GetDescription()
-        {
-            return "jpegLS";
-        }
+        public string Description => "jpegLS";
+
+        public int Code => PredictorCodes.JpegLS;
     }
 }

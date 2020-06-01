@@ -9,9 +9,8 @@ namespace NearLosslessPredictiveCoder.Predictors
             return a;
         }
 
-        public string GetDescription()
-        {
-            return "A";
-        }
+        public string Description => "A";
+
+        public int Code => PredictorCodes.A;
     }
 }

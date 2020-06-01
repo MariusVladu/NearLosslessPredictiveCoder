@@ -9,9 +9,8 @@ namespace NearLosslessPredictiveCoder.Predictors
             return (a + b) / 2;
         }
 
-        public string GetDescription()
-        {
-            return "(A + B) / 2";
-        }
+        public string Description => "(A + B) / 2";
+
+        public int Code => PredictorCodes.Predictor7;
     }
 }
