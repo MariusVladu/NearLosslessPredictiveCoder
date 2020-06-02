@@ -11,6 +11,6 @@ namespace NearLosslessPredictiveCoder.Predictors
 
         public string Description => "C";
 
-        public int Code => PredictorCodes.C;
+        public int Code => (int)Predictor.C;
     }
 }

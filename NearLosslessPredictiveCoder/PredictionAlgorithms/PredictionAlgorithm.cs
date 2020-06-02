@@ -1,5 +1,4 @@
-﻿using NearLosslessPredictiveCoder.Contracts.Predictors;
-using NearLosslessPredictiveCoder.Entities;
+﻿using NearLosslessPredictiveCoder.Entities;
 
 namespace NearLosslessPredictiveCoder.PredictionAlgorithms
 {

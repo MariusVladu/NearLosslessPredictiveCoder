@@ -1,35 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using BitReaderWriter.Contracts;
+using NearLosslessPredictiveCoder.Contracts.SaveModes;
+using System.Collections.Generic;
 
 namespace NearLosslessPredictiveCoder.SaveModes
 {
-    public class FixedSaveMode : BaseSaveMode
+    public class FixedSaveMode : ISaveMode
     {
-        private int numberOfBitsForValue;
+        public static int NumberOfBitsForValue = 9;
 
-        public FixedSaveMode(int numberOfBitsForValue)
-        {
-            this.numberOfBitsForValue = numberOfBitsForValue;
-        }
-
-        protected override char SaveModeCode => 'F';
-
-        protected override int[] ReadValues()
+        public int[] ReadValues(long bitsToRead, IBitReader bitReader)
         {
             var values = new List<int>();
 
-            for (int i = 0; i < bitsToRead; i += numberOfBitsForValue)
+            for (int i = 0; i < bitsToRead; i += NumberOfBitsForValue)
             {
-                values.Add((int)bitReader.ReadNBits(numberOfBitsForValue));
+                values.Add((int)bitReader.ReadNBits(NumberOfBitsForValue));
             }
 
             return values.ToArray();
         }
 
-        protected override void WriteValues(int[] values)
+        public void WriteValues(int[] values, IBitWriter bitWriter)
         {
             foreach (var value in values)
             {
-                bitWriter.WriteNBits(numberOfBitsForValue, (uint)value);
+                bitWriter.WriteNBits(NumberOfBitsForValue, (uint)value);
             }
         }
     }

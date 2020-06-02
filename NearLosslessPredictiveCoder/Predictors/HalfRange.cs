@@ -18,6 +18,6 @@ namespace NearLosslessPredictiveCoder.Predictors
 
         public string Description => $"{range / 2}";
 
-        public int Code => PredictorCodes.HalfRange;
+        public int Code => (int)Predictor.HalfRange;
     }
 }

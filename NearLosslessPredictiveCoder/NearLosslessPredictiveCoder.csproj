@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\SaveModes\ISaveMode.cs" />
+    <Compile Include="Decoder.cs" />
+    <Compile Include="FileOperations\BaseFileOperation.cs" />
+    <Compile Include="FileOperations\EncodedImageReader.cs" />
+    <Compile Include="FileOperations\EncodedImageWriter.cs" />
+    <Compile Include="Encoder.cs" />
     <Compile Include="Entities\EncodedImage.cs" />
     <Compile Include="Entities\PredictorSettings.cs" />
     <Compile Include="MatrixOperations.cs" />
@@ -62,12 +68,13 @@
     <Compile Include="Predictors\Predictor6.cs" />
     <Compile Include="Predictors\Predictor7.cs" />
     <Compile Include="Predictors\HalfRange.cs" />
-    <Compile Include="Predictors\PredictorCodes.cs" />
+    <Compile Include="Predictors\Predictor.cs" />
     <Compile Include="Predictors\PredictorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quantization.cs" />
-    <Compile Include="SaveModes\BaseSaveMode.cs" />
     <Compile Include="SaveModes\FixedSaveMode.cs" />
+    <Compile Include="SaveModes\SaveMode.cs" />
+    <Compile Include="SaveModes\SaveModeFactory.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,10 +1,10 @@
-﻿using NearLosslessPredictiveCoder.Entities;
+﻿using BitReaderWriter.Contracts;
 
 namespace NearLosslessPredictiveCoder.Contracts.SaveModes
 {
     public interface ISaveMode
     {
-        void SaveToFile(EncodedImage encodedImage, string originalImagePath);
-        EncodedImage ReadFromFile(string filePath);
+        void WriteValues(int[] values, IBitWriter bitWriter);
+        int[] ReadValues(long bitsToRead, IBitReader bitReader);
     }
 }

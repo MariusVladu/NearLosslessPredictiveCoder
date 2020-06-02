@@ -11,6 +11,6 @@ namespace NearLosslessPredictiveCoder.Predictors
 
         public string Description => "A + (B - C) / 2";
 
-        public int Code => PredictorCodes.Predictor5;
+        public int Code => (int)Predictor.Predictor5;
     }
 }

@@ -17,6 +17,6 @@ namespace NearLosslessPredictiveCoder.Predictors
 
         public string Description => "jpegLS";
 
-        public int Code => PredictorCodes.JpegLS;
+        public int Code => (int)Predictor.JpegLS;
     }
 }

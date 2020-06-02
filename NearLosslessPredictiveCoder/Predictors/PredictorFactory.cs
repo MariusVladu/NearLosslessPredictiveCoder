@@ -5,21 +5,21 @@ namespace NearLosslessPredictiveCoder.Predictors
 {
     public static class PredictorFactory
     {
-        public static IPredictor GetPredictorByCode(int predictorCode)
+        public static IPredictor GetPredictor(Predictor predictor)
         {
-            switch(predictorCode)
+            switch(predictor)
             {
-                case 0: return new HalfRange();
-                case 1: return new A();
-                case 2: return new B();
-                case 3: return new C();
-                case 4: return new Predictor4();
-                case 5: return new Predictor5();
-                case 6: return new Predictor6();
-                case 7: return new Predictor7();
-                case 8: return new JpegLS();
+                case Predictor.HalfRange: return new HalfRange();
+                case Predictor.A: return new A();
+                case Predictor.B: return new B();
+                case Predictor.C: return new C();
+                case Predictor.Predictor4: return new Predictor4();
+                case Predictor.Predictor5: return new Predictor5();
+                case Predictor.Predictor6: return new Predictor6();
+                case Predictor.Predictor7: return new Predictor7();
+                case Predictor.JpegLS: return new JpegLS();
 
-                default: throw new InvalidOperationException($"No predictor implemented with code = {predictorCode}");
+                default: throw new InvalidOperationException($"Requested predictor not implemented");
             }
         }
     }
