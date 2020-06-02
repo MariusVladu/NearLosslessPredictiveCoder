@@ -37,7 +37,9 @@ namespace NearLosslessPredictiveCoder.PredictionAlgorithms
             return new EncodedImage
             {
                 PredictorSettings = predictorSettings,
-                QuantizedErrorPredictionMatrix = quantizedErrorPrediction
+                QuantizedErrorPredictionMatrix = quantizedErrorPrediction,
+                ErrorPrediction = errorPrediction,
+                Original = original
             };
         }
 

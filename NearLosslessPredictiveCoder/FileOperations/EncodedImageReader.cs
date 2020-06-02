@@ -15,21 +15,13 @@ namespace NearLosslessPredictiveCoder.FileOperations
 
             InitializeBitReader(encodedImageFilePath);
 
-            SkipHeaderFromImage();
+            ImageHeaderHandler.SkipHeaderFromImage(bitReader);
 
             return new EncodedImage
             {
                 PredictorSettings = ReadPredictorSettings(),
                 QuantizedErrorPredictionMatrix = ReadMatrix(saveMode)
             };
-        }
-
-        public void SkipHeaderFromImage()
-        {
-            for (int i = 0; i < 1078; i++)
-            {
-                bitReader.ReadNBits(8);
-            }
         }
 
         public PredictorSettings ReadPredictorSettings()

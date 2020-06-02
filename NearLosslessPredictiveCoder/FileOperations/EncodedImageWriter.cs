@@ -9,21 +9,11 @@ namespace NearLosslessPredictiveCoder.FileOperations
         {
             InitializeBitWriter(GetOutputPath(originalImagePath, encodedImage.PredictorSettings, saveMode));
 
-            WriteHeaderFromOriginalImage(originalImagePath);
+            ImageHeaderHandler.CopyHeaderFromFile(originalImagePath, bitWriter);
 
             WritePredictorSettings(encodedImage.PredictorSettings, saveMode);
 
             WriteMatrix(encodedImage.QuantizedErrorPredictionMatrix, saveMode);
-        }
-
-        public void WriteHeaderFromOriginalImage(string originalFilePath)
-        {
-            InitializeBitReader(originalFilePath);
-
-            for (int i = 0; i < 1078; i++)
-            {
-                bitWriter.WriteNBits(8, bitReader.ReadNBits(8));
-            }
         }
 
         public void WritePredictorSettings(PredictorSettings predictorSettings, SaveMode saveMode)

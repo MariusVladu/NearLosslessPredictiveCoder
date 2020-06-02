@@ -1,5 +1,4 @@
-﻿using NearLosslessPredictiveCoder.Contracts.Predictors;
-using NearLosslessPredictiveCoder.Entities;
+﻿using NearLosslessPredictiveCoder.Entities;
 
 namespace NearLosslessPredictiveCoder.PredictionAlgorithms
 {
@@ -25,7 +24,7 @@ namespace NearLosslessPredictiveCoder.PredictionAlgorithms
             decoded = new int[height, width];
         }
 
-        public int[,] GetDecoded()
+        public int[,] GetDecodedMatrix()
         {
             CalculateMatrices();
 
