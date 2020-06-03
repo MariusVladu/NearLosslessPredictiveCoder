@@ -48,6 +48,7 @@
     <Compile Include="Contracts\SaveModes\ISaveMode.cs" />
     <Compile Include="Decoder.cs" />
     <Compile Include="Entities\DecodedImage.cs" />
+    <Compile Include="Entities\TableEncodedValue.cs" />
     <Compile Include="FileOperations\BaseFileOperation.cs" />
     <Compile Include="FileOperations\ImageWriter.cs" />
     <Compile Include="FileOperations\EncodedImageReader.cs" />
@@ -79,6 +80,8 @@
     <Compile Include="SaveModes\FixedSaveMode.cs" />
     <Compile Include="SaveModes\SaveMode.cs" />
     <Compile Include="SaveModes\SaveModeFactory.cs" />
+    <Compile Include="SaveModes\TableSaveMode.cs" />
+    <Compile Include="TableValueEncoding.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

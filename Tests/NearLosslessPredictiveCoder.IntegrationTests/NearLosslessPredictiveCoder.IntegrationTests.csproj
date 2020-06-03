@@ -53,7 +53,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FixedSaveModeIntegrationTests.cs" />
+    <Compile Include="SaveModes\FixedSaveModeIntegrationTests.cs" />
+    <Compile Include="SaveModes\SaveModesTestsCommon.cs" />
+    <Compile Include="SaveModes\TableSaveModeIntegrationTests.cs" />
     <Compile Include="InversePredictionAlgorithmIntegrationTests.cs" />
     <Compile Include="PredictionAlgorithmIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
