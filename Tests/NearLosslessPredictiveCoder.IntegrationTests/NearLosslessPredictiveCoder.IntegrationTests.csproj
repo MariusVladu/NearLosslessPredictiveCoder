@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="SaveModes\FixedSaveModeIntegrationTests.cs" />
     <Compile Include="SaveModes\SaveModesTestsCommon.cs" />
+    <Compile Include="SaveModes\ArithmeticSaveModeIntegrationTests.cs" />
     <Compile Include="SaveModes\TableSaveModeIntegrationTests.cs" />
     <Compile Include="InversePredictionAlgorithmIntegrationTests.cs" />
     <Compile Include="PredictionAlgorithmIntegrationTests.cs" />

@@ -223,7 +223,7 @@ namespace NearLosslessPredictiveCoder.GUI
 
             lastOperationWasEncode = true;
 
-            this.toolStripStatusLabel.Text = "Encoding Complete.";
+            this.toolStripStatusLabel.Text = "Encoding Complete. ";
             this.groupBoxHistogram.Enabled = true;
             this.buttonSaveEncoded.Enabled = true;
             this.radioButtonOriginal.Enabled = true;
@@ -240,9 +240,10 @@ namespace NearLosslessPredictiveCoder.GUI
             using (var encodedImageWriter = new EncodedImageWriter())
             {
                 encodedImageWriter.SaveToFile(encodedImage, originalFilePath, saveMode);
-            }
 
-            this.toolStripStatusLabel.Text = "File saved";
+                var compressedFilePath = encodedImageWriter.GetOutputPath(originalFilePath, predictorSettings, saveMode);
+                this.toolStripStatusLabel.Text = "File saved. " + Util.GetCompressionRatio(originalFilePath, compressedFilePath);
+            }
         }
 
         private void buttonSaveDecoded_Click(object sender, EventArgs e)
@@ -453,6 +454,44 @@ namespace NearLosslessPredictiveCoder.GUI
         private void HistogramScale_ValueChanged(object sender, EventArgs e)
         {
             RefreshHistogram();
+        }
+
+        private void computeError_Click(object sender, EventArgs e)
+        {
+            if(originalBitmap == null || decodedBitmap == null)
+            {
+                MessageBox.Show("Load both original and decoded images");
+                return;
+            }
+
+            var originalMatrix = Mappers.ImageMapper.GetPixelMatrixFromImage(originalBitmap);
+            var decodedMatrix = Mappers.ImageMapper.GetPixelMatrixFromImage(decodedBitmap);
+
+            var height = originalMatrix.GetLength(0);
+            var width = originalMatrix.GetLength(1);
+
+            var minError = int.MaxValue;
+            var maxError = int.MinValue;
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    var error = originalMatrix[i, j] - decodedMatrix[i, j];
+
+                    if (error < minError)
+                        minError = error;
+
+                    if (error > maxError)
+                        maxError = error;
+                }
+            }
+
+            labelMinimumError.Visible = true;
+            labelMaximumError.Visible = true;
+
+            labelMinimumError.Text = $"Min = {minError}";
+            labelMaximumError.Text = $"Max = {maxError}";
         }
     }
 }

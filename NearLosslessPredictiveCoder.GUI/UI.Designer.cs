@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.originalImagePanel = new System.Windows.Forms.Panel();
             this.errorImagePanel = new System.Windows.Forms.Panel();
             this.decodedImagePanel = new System.Windows.Forms.Panel();
@@ -63,6 +63,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.errorImageType = new System.Windows.Forms.ComboBox();
+            this.computeError = new System.Windows.Forms.Button();
+            this.labelMinimumError = new System.Windows.Forms.Label();
+            this.labelMaximumError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.contrast)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBoxHistogram.SuspendLayout();
@@ -133,7 +136,7 @@
             // buttonEncode
             // 
             this.buttonEncode.Enabled = false;
-            this.buttonEncode.Location = new System.Drawing.Point(12, 320);
+            this.buttonEncode.Location = new System.Drawing.Point(91, 291);
             this.buttonEncode.Name = "buttonEncode";
             this.buttonEncode.Size = new System.Drawing.Size(75, 23);
             this.buttonEncode.TabIndex = 3;
@@ -144,7 +147,7 @@
             // buttonSaveEncoded
             // 
             this.buttonSaveEncoded.Enabled = false;
-            this.buttonSaveEncoded.Location = new System.Drawing.Point(148, 293);
+            this.buttonSaveEncoded.Location = new System.Drawing.Point(172, 291);
             this.buttonSaveEncoded.Name = "buttonSaveEncoded";
             this.buttonSaveEncoded.Size = new System.Drawing.Size(96, 23);
             this.buttonSaveEncoded.TabIndex = 4;
@@ -155,7 +158,7 @@
             // groupBoxPredictors
             // 
             this.groupBoxPredictors.AutoSize = true;
-            this.groupBoxPredictors.Location = new System.Drawing.Point(12, 355);
+            this.groupBoxPredictors.Location = new System.Drawing.Point(12, 331);
             this.groupBoxPredictors.Name = "groupBoxPredictors";
             this.groupBoxPredictors.Size = new System.Drawing.Size(115, 253);
             this.groupBoxPredictors.TabIndex = 5;
@@ -227,9 +230,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 615);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 636);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(806, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(804, 22);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -248,7 +251,7 @@
             this.groupBoxHistogram.Controls.Add(this.radioButtonOriginal);
             this.groupBoxHistogram.Controls.Add(this.HistogramScale);
             this.groupBoxHistogram.Enabled = false;
-            this.groupBoxHistogram.Location = new System.Drawing.Point(133, 466);
+            this.groupBoxHistogram.Location = new System.Drawing.Point(133, 442);
             this.groupBoxHistogram.Name = "groupBoxHistogram";
             this.groupBoxHistogram.Size = new System.Drawing.Size(111, 142);
             this.groupBoxHistogram.TabIndex = 12;
@@ -345,22 +348,22 @@
             // chart
             // 
             this.chart.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.AxisX.Interval = 256D;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisX.MajorTickMark.Enabled = false;
-            chartArea2.AxisX.Title = "Intensity";
-            chartArea2.AxisY.MajorGrid.Enabled = false;
-            chartArea2.AxisY.MajorTickMark.Enabled = false;
-            chartArea2.AxisY.Title = "Frequency (# of pixels)";
-            chartArea2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
-            legend2.BackColor = System.Drawing.Color.Transparent;
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
+            chartArea1.AxisX.Interval = 256D;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorTickMark.Enabled = false;
+            chartArea1.AxisX.Title = "Intensity";
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.AxisY.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.Title = "Frequency (# of pixels)";
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(262, 331);
             this.chart.Name = "chart";
-            this.chart.Size = new System.Drawing.Size(530, 277);
+            this.chart.Size = new System.Drawing.Size(530, 297);
             this.chart.TabIndex = 13;
             this.chart.Text = "chart1";
             // 
@@ -370,7 +373,7 @@
             this.groupBoxSaveModes.Controls.Add(this.Arithmetic);
             this.groupBoxSaveModes.Controls.Add(this.Table);
             this.groupBoxSaveModes.Controls.Add(this.Fixed);
-            this.groupBoxSaveModes.Location = new System.Drawing.Point(133, 355);
+            this.groupBoxSaveModes.Location = new System.Drawing.Point(133, 331);
             this.groupBoxSaveModes.Name = "groupBoxSaveModes";
             this.groupBoxSaveModes.Size = new System.Drawing.Size(111, 105);
             this.groupBoxSaveModes.TabIndex = 14;
@@ -427,14 +430,14 @@
             // 
             // KValue
             // 
-            this.KValue.Location = new System.Drawing.Point(200, 329);
+            this.KValue.Location = new System.Drawing.Point(12, 608);
             this.KValue.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
             this.KValue.Name = "KValue";
-            this.KValue.Size = new System.Drawing.Size(44, 20);
+            this.KValue.Size = new System.Drawing.Size(113, 20);
             this.KValue.TabIndex = 15;
             this.KValue.Value = new decimal(new int[] {
             2,
@@ -446,11 +449,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(151, 331);
+            this.label5.Location = new System.Drawing.Point(12, 592);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 16;
-            this.label5.Text = "K value";
+            this.label5.Text = "Accepted Error";
             // 
             // label6
             // 
@@ -473,11 +476,42 @@
             this.errorImageType.TabIndex = 19;
             this.errorImageType.SelectedIndexChanged += new System.EventHandler(this.errorImageType_SelectedIndexChanged);
             // 
+            // computeError
+            // 
+            this.computeError.Location = new System.Drawing.Point(133, 587);
+            this.computeError.Name = "computeError";
+            this.computeError.Size = new System.Drawing.Size(111, 23);
+            this.computeError.TabIndex = 20;
+            this.computeError.Text = "Compute Error";
+            this.computeError.UseVisualStyleBackColor = true;
+            this.computeError.Click += new System.EventHandler(this.computeError_Click);
+            // 
+            // labelMinimumError
+            // 
+            this.labelMinimumError.AutoSize = true;
+            this.labelMinimumError.Location = new System.Drawing.Point(131, 615);
+            this.labelMinimumError.Name = "labelMinimumError";
+            this.labelMinimumError.Size = new System.Drawing.Size(36, 13);
+            this.labelMinimumError.TabIndex = 21;
+            this.labelMinimumError.Text = "Min = ";
+            // 
+            // labelMaximumError
+            // 
+            this.labelMaximumError.AutoSize = true;
+            this.labelMaximumError.Location = new System.Drawing.Point(190, 615);
+            this.labelMaximumError.Name = "labelMaximumError";
+            this.labelMaximumError.Size = new System.Drawing.Size(39, 13);
+            this.labelMaximumError.TabIndex = 22;
+            this.labelMaximumError.Text = "Max = ";
+            // 
             // UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 637);
+            this.ClientSize = new System.Drawing.Size(804, 658);
+            this.Controls.Add(this.labelMaximumError);
+            this.Controls.Add(this.labelMinimumError);
+            this.Controls.Add(this.computeError);
             this.Controls.Add(this.errorImageType);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -556,6 +590,9 @@
         private System.Windows.Forms.NumericUpDown HistogramScale;
         private System.Windows.Forms.RadioButton radioButtonQuantizedErrorPrediction;
         private System.Windows.Forms.ComboBox errorImageType;
+        private System.Windows.Forms.Button computeError;
+        private System.Windows.Forms.Label labelMinimumError;
+        private System.Windows.Forms.Label labelMaximumError;
     }
 }
 

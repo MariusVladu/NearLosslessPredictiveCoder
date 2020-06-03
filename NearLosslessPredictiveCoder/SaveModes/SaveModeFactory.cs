@@ -11,6 +11,7 @@ namespace NearLosslessPredictiveCoder.SaveModes
             {
                 case SaveMode.Fixed: return new FixedSaveMode();
                 case SaveMode.Table: return new TableSaveMode();
+                case SaveMode.Arithmetic: return new ArithmeticSaveMode();
 
                 default: throw new InvalidOperationException($"Requested save mode not implemented");
             }

@@ -22,6 +22,7 @@ namespace NearLosslessPredictiveCoder.IntegrationTests.SaveModes
 
             return array;
         }
+
         public static IBitReader GetBitReader(string filePath)
         {
             var inputFileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);

@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ArithmeticCoding">
+      <HintPath>..\packages\ArithmeticCoding\ArithmeticCoding.dll</HintPath>
+    </Reference>
     <Reference Include="BitReaderWriter">
       <HintPath>..\packages\BitReaderWriter\BitReaderWriter.dll</HintPath>
     </Reference>
@@ -80,6 +83,7 @@
     <Compile Include="SaveModes\FixedSaveMode.cs" />
     <Compile Include="SaveModes\SaveMode.cs" />
     <Compile Include="SaveModes\SaveModeFactory.cs" />
+    <Compile Include="SaveModes\ArithmeticSaveMode.cs" />
     <Compile Include="SaveModes\TableSaveMode.cs" />
     <Compile Include="TableValueEncoding.cs" />
   </ItemGroup>
