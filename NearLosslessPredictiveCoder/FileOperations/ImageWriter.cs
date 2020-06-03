@@ -21,11 +21,9 @@ namespace NearLosslessPredictiveCoder.FileOperations
             var height = pixelMatrix.GetLength(0);
             var width = pixelMatrix.GetLength(1);
 
-            for (int i = 0; i < height; i++)
+            for (int i = height - 1; i >= 0; i--)
                 for (int j = 0; j < width; j++)
-                {
-                    bitWriter.WriteNBits(8, (uint)pixelMatrix[i, j]);
-                }
+                    bitWriter.WriteNBits(8, (uint)pixelMatrix[j, i]);
         }
     }
 }

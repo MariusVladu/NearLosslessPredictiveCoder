@@ -1,10 +1,9 @@
 ﻿namespace NearLosslessPredictiveCoder.Entities
 {
-    public class EncodedImage
+    public class DecodedImage
     {
-        public int[,] Original { get; set; }
-        public int[,] ErrorPrediction { get; set; }
         public int[,] QuantizedErrorPredictionMatrix { get; set; }
+        public int[,] ErrorPredictionMatrix { get; set; }
         public int[,] Decoded { get; set; }
         public PredictorSettings PredictorSettings { get; set; }
     }

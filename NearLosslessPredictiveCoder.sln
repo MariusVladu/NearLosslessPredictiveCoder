@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NearLosslessPredictiveCoder
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NearLosslessPredictiveCoder.IntegrationTests", "Tests\NearLosslessPredictiveCoder.IntegrationTests\NearLosslessPredictiveCoder.IntegrationTests.csproj", "{379BF628-77E8-4264-AF40-BDA82026E704}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NearLosslessPredictiveCoder.GUI", "NearLosslessPredictiveCoder.GUI\NearLosslessPredictiveCoder.GUI.csproj", "{7ACA523E-A8A5-4643-8D92-E264CDE73B49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{379BF628-77E8-4264-AF40-BDA82026E704}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{379BF628-77E8-4264-AF40-BDA82026E704}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{379BF628-77E8-4264-AF40-BDA82026E704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ACA523E-A8A5-4643-8D92-E264CDE73B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ACA523E-A8A5-4643-8D92-E264CDE73B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ACA523E-A8A5-4643-8D92-E264CDE73B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ACA523E-A8A5-4643-8D92-E264CDE73B49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

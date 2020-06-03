@@ -5,15 +5,22 @@ using System.Drawing;
 
 namespace NearLosslessPredictiveCoder
 {
-    public class Decoder
+    public static class Decoder
     {
-        public Bitmap Decode(EncodedImage encodedImage)
+        public static Bitmap Decode(EncodedImage encodedImage)
         {
             var inversePredictionAlgorithm = new InversePredictionAlgorithm(encodedImage);
             
-            var decodedMatrix = inversePredictionAlgorithm.GetDecodedMatrix();
+            var decodedImage = inversePredictionAlgorithm.GetDecodedImage();
 
-            return ImageMapper.GetImageFromPixelMatrix(decodedMatrix);
+            return ImageMapper.GetImageFromPixelMatrix(decodedImage.Decoded);
+        }
+
+        public static DecodedImage GetDecodedImage(EncodedImage encodedImage)
+        {
+            var inversePredictionAlgorithm = new InversePredictionAlgorithm(encodedImage);
+
+            return inversePredictionAlgorithm.GetDecodedImage();
         }
     }
 }

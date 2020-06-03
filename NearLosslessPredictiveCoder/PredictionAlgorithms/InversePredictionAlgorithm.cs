@@ -24,11 +24,17 @@ namespace NearLosslessPredictiveCoder.PredictionAlgorithms
             decoded = new int[height, width];
         }
 
-        public int[,] GetDecodedMatrix()
+        public DecodedImage GetDecodedImage()
         {
             CalculateMatrices();
 
-            return decoded;
+            return new DecodedImage
+            {
+                QuantizedErrorPredictionMatrix = quantizedErrorPrediction,
+                ErrorPredictionMatrix = dequantizedQuantizedErrorPrediction,
+                Decoded = decoded,
+                PredictorSettings = predictorSettings
+            };
         }
 
         public void CalculateMatrices()

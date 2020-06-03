@@ -5,9 +5,9 @@ using System.Drawing;
 
 namespace NearLosslessPredictiveCoder
 {
-    public class Encoder
+    public static class Encoder
     {
-        public EncodedImage Encode(Bitmap image, PredictorSettings predictorSettings)
+        public static EncodedImage Encode(Bitmap image, PredictorSettings predictorSettings)
         {
             var originalImageMatrix = ImageMapper.GetPixelMatrixFromImage(image);
 

@@ -2,6 +2,8 @@
 {
     public enum SaveMode
     {
-        Fixed = 'F'
+        Fixed = 'F',
+        Table = 'T',
+        Arithmetic = 'A'
     }
 }

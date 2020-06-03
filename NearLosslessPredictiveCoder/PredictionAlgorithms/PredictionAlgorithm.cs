@@ -39,7 +39,8 @@ namespace NearLosslessPredictiveCoder.PredictionAlgorithms
                 PredictorSettings = predictorSettings,
                 QuantizedErrorPredictionMatrix = quantizedErrorPrediction,
                 ErrorPrediction = errorPrediction,
-                Original = original
+                Original = original,
+                Decoded = decoded
             };
         }
 

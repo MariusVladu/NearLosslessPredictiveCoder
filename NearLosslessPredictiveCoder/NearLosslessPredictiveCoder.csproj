@@ -47,12 +47,16 @@
   <ItemGroup>
     <Compile Include="Contracts\SaveModes\ISaveMode.cs" />
     <Compile Include="Decoder.cs" />
+    <Compile Include="Entities\DecodedImage.cs" />
     <Compile Include="FileOperations\BaseFileOperation.cs" />
+    <Compile Include="FileOperations\ImageWriter.cs" />
     <Compile Include="FileOperations\EncodedImageReader.cs" />
     <Compile Include="FileOperations\EncodedImageWriter.cs" />
     <Compile Include="Encoder.cs" />
     <Compile Include="Entities\EncodedImage.cs" />
     <Compile Include="Entities\PredictorSettings.cs" />
+    <Compile Include="FileOperations\ImageHeaderHandler.cs" />
+    <Compile Include="Mappers\ImageMapper.cs" />
     <Compile Include="MatrixOperations.cs" />
     <Compile Include="PredictionAlgorithms\BasePredictionAlgorithm.cs" />
     <Compile Include="Contracts\IQuantization.cs" />
