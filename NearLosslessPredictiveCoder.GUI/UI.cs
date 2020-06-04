@@ -182,6 +182,8 @@ namespace NearLosslessPredictiveCoder.GUI
         {
             UpdateUiPredictorSelection();
 
+            UpdateUiAcceptedError();
+
             UpdateUiSaveModeSelection();
         }
 
@@ -193,6 +195,11 @@ namespace NearLosslessPredictiveCoder.GUI
             var predictor = predictors.First(x => x.Code == predictorSettings.Predictor.Code);
             var predictorIndex = predictors.IndexOf(predictor);
             ((RadioButton)groupBoxPredictors.Controls[predictorIndex]).Checked = true;
+        }
+
+        private void UpdateUiAcceptedError()
+        {
+            KValue.Value = predictorSettings.AcceptedError;
         }
 
         private void UpdateUiSaveModeSelection()
