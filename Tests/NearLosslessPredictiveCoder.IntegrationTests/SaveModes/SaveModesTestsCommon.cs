@@ -9,7 +9,7 @@ namespace NearLosslessPredictiveCoder.IntegrationTests.SaveModes
     {
         public static int[] GetArray()
         {
-            return new int[] { -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            return new int[] { -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 128 };
         }
 
         public static int[] GetRandom65536Array()
@@ -18,7 +18,7 @@ namespace NearLosslessPredictiveCoder.IntegrationTests.SaveModes
             var random = new Random();
 
             for (int i = 0; i < 256 * 256; i++)
-                array[i] = random.Next(-10, 10);
+                array[i] = random.Next(-255, 256);
 
             return array;
         }
