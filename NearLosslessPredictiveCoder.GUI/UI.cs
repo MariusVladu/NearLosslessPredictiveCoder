@@ -76,7 +76,15 @@ namespace NearLosslessPredictiveCoder.GUI
         private SaveMode GetSelectedSaveMode()
         {
             if (Fixed.Checked)
-                return SaveMode.Fixed;
+            {
+                if(fixedSize.SelectedIndex == 0)
+                    return SaveMode.Fixed9;
+
+                if (fixedSize.SelectedIndex == 1)
+                    return SaveMode.Fixed16;
+
+                return SaveMode.Fixed32;
+            }
 
             if (Table.Checked)
                 return SaveMode.Table;
@@ -169,11 +177,11 @@ namespace NearLosslessPredictiveCoder.GUI
 
             var k = Convert.ToInt32(extension.Substring(1, extension.IndexOf('p') - extension.IndexOf('k') - 1));
             var predictorIndex = Convert.ToInt32(extension[extension.IndexOf('p') + 1].ToString());
-            var saveModeChar = extension.Last();
+            var saveModeString = extension.Substring(extension.IndexOf('p') + 2);
 
             predictorSettings.AcceptedError = k;
             predictorSettings.Predictor = predictors[predictorIndex];
-            saveMode = (SaveMode)saveModeChar;
+            saveMode = (SaveMode)Enum.Parse(typeof(SaveMode), saveModeString);
 
             UpdateUiFromSettings();
         }
@@ -210,9 +218,20 @@ namespace NearLosslessPredictiveCoder.GUI
                     ((RadioButton)radioButtonControl).Checked = false;
             }
 
-            if (saveMode == SaveMode.Fixed)
+            if (saveMode == SaveMode.Fixed9)
             {
                 Fixed.Checked = true;
+                fixedSize.SelectedIndex = 0;
+            }
+            else if (saveMode == SaveMode.Fixed16)
+            {
+                Fixed.Checked = true;
+                fixedSize.SelectedIndex = 1;
+            }
+            else if (saveMode == SaveMode.Fixed32)
+            {
+                Fixed.Checked = true;
+                fixedSize.SelectedIndex = 2;
             }
             else if (saveMode == SaveMode.Table)
             {
@@ -436,13 +455,6 @@ namespace NearLosslessPredictiveCoder.GUI
             return value;
         }
 
-        private void fixedSize_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var fixedSaveModeValueSize = Convert.ToInt32(fixedSize.SelectedItem);
-
-            FixedSaveMode.NumberOfBitsForValue = fixedSaveModeValueSize;
-        }
-
         private void errorImageType_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshErrorImage();
@@ -499,6 +511,22 @@ namespace NearLosslessPredictiveCoder.GUI
 
             labelMinimumError.Text = $"Min = {minError}";
             labelMaximumError.Text = $"Max = {maxError}";
+        }
+
+        private void fixedSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (fixedSize.SelectedIndex == 0)
+            {
+                saveMode = SaveMode.Fixed9;
+            }
+            else if (fixedSize.SelectedIndex == 1)
+            {
+                saveMode = SaveMode.Fixed16;
+            }
+            else if (fixedSize.SelectedIndex == 2)
+            {
+                saveMode = SaveMode.Fixed32;
+            }
         }
     }
 }

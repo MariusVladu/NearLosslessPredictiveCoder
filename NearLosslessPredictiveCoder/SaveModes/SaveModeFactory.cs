@@ -9,7 +9,9 @@ namespace NearLosslessPredictiveCoder.SaveModes
         {
             switch (saveMode)
             {
-                case SaveMode.Fixed: return new FixedSaveMode();
+                case SaveMode.Fixed9: return new FixedSaveMode(9);
+                case SaveMode.Fixed16: return new FixedSaveMode(16);
+                case SaveMode.Fixed32: return new FixedSaveMode(32);
                 case SaveMode.Table: return new TableSaveMode();
                 case SaveMode.Arithmetic: return new ArithmeticSaveMode();
 

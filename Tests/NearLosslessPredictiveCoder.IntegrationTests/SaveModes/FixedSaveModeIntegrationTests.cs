@@ -18,7 +18,7 @@ namespace NearLosslessPredictiveCoder.IntegrationTests.SaveModes
         [TestInitialize]
         public void Setup()
         {
-            fixedSaveMode = new FixedSaveMode();
+            fixedSaveMode = new FixedSaveMode(9);
 
             array = SaveModesTestsCommon.GetArray();
         }
@@ -26,7 +26,6 @@ namespace NearLosslessPredictiveCoder.IntegrationTests.SaveModes
         [TestMethod]
         public void TestThatWhenNumberOfBitsIs9FixedSaveModeCreatesFileOfExpectedSize()
         {
-            FixedSaveMode.NumberOfBitsForValue = 9;
             var expectedBitsToRead = GetExpectedBitsToRead(array);
             using(bitWriter = SaveModesTestsCommon.GetBitWriter(outputFilePath))
                 fixedSaveMode.WriteValues(array, bitWriter);
@@ -38,7 +37,6 @@ namespace NearLosslessPredictiveCoder.IntegrationTests.SaveModes
         [TestMethod]
         public void TestThatWhenNumberOfBitsIs9FixedSaveModeCanReadWhatItWrote()
         {
-            FixedSaveMode.NumberOfBitsForValue = 9;
             var expectedBitsToRead = GetExpectedBitsToRead(array);
             using (bitWriter = SaveModesTestsCommon.GetBitWriter(outputFilePath))
                 fixedSaveMode.WriteValues(array, bitWriter);
@@ -53,7 +51,6 @@ namespace NearLosslessPredictiveCoder.IntegrationTests.SaveModes
         [TestMethod]
         public void TestThatWhenNumberOfBitsIs9AndArrayHas65536ElementsFixedSaveModeCanReadWhatItWrote()
         {
-            FixedSaveMode.NumberOfBitsForValue = 9;
             var longArray = SaveModesTestsCommon.GetRandom65536Array();
             var expectedBitsToRead = GetExpectedBitsToRead(longArray);
             using (bitWriter = SaveModesTestsCommon.GetBitWriter(outputFilePath))
@@ -69,7 +66,7 @@ namespace NearLosslessPredictiveCoder.IntegrationTests.SaveModes
 
         private long GetExpectedBitsToRead(int[] array)
         {
-            var expectedBitsToRead = (array.Length * FixedSaveMode.NumberOfBitsForValue);
+            var expectedBitsToRead = (array.Length * fixedSaveMode.numberOfBitsForValue);
 
             if (expectedBitsToRead % 8 > 0)
                 return expectedBitsToRead + (8 - expectedBitsToRead % 8);

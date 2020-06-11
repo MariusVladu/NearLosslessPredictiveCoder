@@ -6,23 +6,28 @@ namespace NearLosslessPredictiveCoder.SaveModes
 {
     public class FixedSaveMode : ISaveMode
     {
-        public static int NumberOfBitsForValue = 9;
-        public static int UnusedBits => 32 - NumberOfBitsForValue;
+        public int numberOfBitsForValue;
+        public int UnusedBits => 32 - numberOfBitsForValue;
+
+        public FixedSaveMode(int numberOfBitsForValue)
+        {
+            this.numberOfBitsForValue = numberOfBitsForValue;
+        }
 
         public int[] ReadValues(long bitsToRead, IBitReader bitReader)
         {
-            bitsToRead -= bitsToRead % NumberOfBitsForValue;
+            bitsToRead -= bitsToRead % numberOfBitsForValue;
 
             var values = new List<int>();
 
             while(bitsToRead > 0)
             { 
-                var readValue = bitReader.ReadNBits(NumberOfBitsForValue);
+                var readValue = bitReader.ReadNBits(numberOfBitsForValue);
                 var parsedValue = ParseValueToInt(readValue);
 
                 values.Add(parsedValue);
 
-                bitsToRead -= NumberOfBitsForValue;
+                bitsToRead -= numberOfBitsForValue;
             }
 
             return values.ToArray();
@@ -32,7 +37,7 @@ namespace NearLosslessPredictiveCoder.SaveModes
         {
             foreach (var value in values)
             {
-                bitWriter.WriteNBits(NumberOfBitsForValue, (uint)value);
+                bitWriter.WriteNBits(numberOfBitsForValue, (uint)value);
             }
         }
 

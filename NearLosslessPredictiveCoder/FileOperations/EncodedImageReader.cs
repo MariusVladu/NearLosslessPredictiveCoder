@@ -19,9 +19,9 @@ namespace NearLosslessPredictiveCoder.FileOperations
             ImageHeaderHandler.SkipHeaderFromImage(bitReader);
 
             var predictorSettings = ReadPredictorSettings();
-            var readSaveMode = (SaveMode)Enum.GetValues(typeof(SaveMode)).GetValue(bitReader.ReadNBits(2));
+            var readSaveMode = (SaveMode)Enum.GetValues(typeof(SaveMode)).GetValue(bitReader.ReadNBits(3));
 
-            bitsToRead -= 4 + 4 + 2;
+            bitsToRead -= 4 + 4 + 3;
 
             return new EncodedImage
             {

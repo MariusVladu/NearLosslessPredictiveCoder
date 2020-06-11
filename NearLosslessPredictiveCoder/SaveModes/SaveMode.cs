@@ -2,8 +2,10 @@
 {
     public enum SaveMode
     {
-        Fixed = 'F',
-        Table = 'T',
-        Arithmetic = 'A'
+        Fixed9,
+        Fixed16,
+        Fixed32,
+        Table,
+        Arithmetic
     }
 }

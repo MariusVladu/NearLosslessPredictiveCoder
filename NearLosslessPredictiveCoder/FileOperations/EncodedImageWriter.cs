@@ -22,7 +22,7 @@ namespace NearLosslessPredictiveCoder.FileOperations
         {
             bitWriter.WriteNBits(4, (uint)predictorSettings.Predictor.Code);
             bitWriter.WriteNBits(4, (uint)predictorSettings.AcceptedError);
-            bitWriter.WriteNBits(2, (uint)Array.IndexOf(Enum.GetValues(typeof(SaveMode)), saveMode));
+            bitWriter.WriteNBits(3, (uint)Array.IndexOf(Enum.GetValues(typeof(SaveMode)), saveMode));
         }
 
         public void WriteMatrix(int[,] matrix, SaveMode saveModeType)
@@ -40,7 +40,7 @@ namespace NearLosslessPredictiveCoder.FileOperations
 
         public string GetEncodedFileExtension(PredictorSettings predictorSettings, SaveMode saveMode)
         {
-            return $"k{predictorSettings.AcceptedError}p{predictorSettings.Predictor.Code}{(char)saveMode}.nlp";
+            return $"k{predictorSettings.AcceptedError}p{predictorSettings.Predictor.Code}{saveMode.ToString()}.nlp";
         }
     }
 }
