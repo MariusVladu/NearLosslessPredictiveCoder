@@ -140,7 +140,7 @@ namespace NearLosslessPredictiveCoder.GUI
         {
             using (var encodedImageReader = new EncodedImageReader())
             {
-                encodedImage = encodedImageReader.ReadEncodedImage(encodedFilePath, saveMode);
+                encodedImage = encodedImageReader.ReadEncodedImage(encodedFilePath);
             }
 
             decodedImage = Decoder.GetDecodedImage(encodedImage);

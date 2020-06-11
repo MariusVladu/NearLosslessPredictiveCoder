@@ -1,5 +1,7 @@
 ﻿using NearLosslessPredictiveCoder.Entities;
 using NearLosslessPredictiveCoder.SaveModes;
+using System;
+using System.Collections.Generic;
 
 namespace NearLosslessPredictiveCoder.FileOperations
 {
@@ -20,7 +22,7 @@ namespace NearLosslessPredictiveCoder.FileOperations
         {
             bitWriter.WriteNBits(4, (uint)predictorSettings.Predictor.Code);
             bitWriter.WriteNBits(4, (uint)predictorSettings.AcceptedError);
-            bitWriter.WriteNBits(8, (char)saveMode);
+            bitWriter.WriteNBits(2, (uint)Array.IndexOf(Enum.GetValues(typeof(SaveMode)), saveMode));
         }
 
         public void WriteMatrix(int[,] matrix, SaveMode saveModeType)

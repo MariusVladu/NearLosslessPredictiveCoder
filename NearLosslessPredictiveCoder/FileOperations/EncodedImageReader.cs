@@ -1,6 +1,7 @@
 ﻿using NearLosslessPredictiveCoder.Entities;
 using NearLosslessPredictiveCoder.Predictors;
 using NearLosslessPredictiveCoder.SaveModes;
+using System;
 using System.IO;
 
 namespace NearLosslessPredictiveCoder.FileOperations
@@ -9,7 +10,7 @@ namespace NearLosslessPredictiveCoder.FileOperations
     {
         protected long bitsToRead;
 
-        public EncodedImage ReadEncodedImage(string encodedImageFilePath, SaveMode saveMode)
+        public EncodedImage ReadEncodedImage(string encodedImageFilePath)
         {
             bitsToRead = (new FileInfo(encodedImageFilePath).Length - 1078) * 8;
 
@@ -17,24 +18,25 @@ namespace NearLosslessPredictiveCoder.FileOperations
 
             ImageHeaderHandler.SkipHeaderFromImage(bitReader);
 
+            var predictorSettings = ReadPredictorSettings();
+            var readSaveMode = (SaveMode)Enum.GetValues(typeof(SaveMode)).GetValue(bitReader.ReadNBits(2));
+
+            bitsToRead -= 4 + 4 + 2;
+
             return new EncodedImage
             {
-                PredictorSettings = ReadPredictorSettings(),
-                QuantizedErrorPredictionMatrix = ReadMatrix(saveMode)
+                PredictorSettings = predictorSettings,
+                QuantizedErrorPredictionMatrix = ReadMatrix(readSaveMode)
             };
         }
 
         public PredictorSettings ReadPredictorSettings()
         {
-            var predictorSettings = new PredictorSettings();
-
-            predictorSettings.Predictor = PredictorFactory.GetPredictor((Predictor)bitReader.ReadNBits(4));
-            predictorSettings.AcceptedError = (int)bitReader.ReadNBits(4);
-            bitReader.ReadNBits(8);
-
-            bitsToRead -= 4 + 4 + 8;
-
-            return predictorSettings;
+            return new PredictorSettings
+            {
+                Predictor = PredictorFactory.GetPredictor((Predictor)bitReader.ReadNBits(4)),
+                AcceptedError = (int)bitReader.ReadNBits(4)
+            };
         }
 
         public int[,] ReadMatrix(SaveMode saveModeType)
